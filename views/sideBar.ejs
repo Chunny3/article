@@ -1,19 +1,17 @@
-<?php
-$current_page = basename($_SERVER['PHP_SELF']);
-?>
-<aside>
+
+    <aside>
     <ul class="navbar-nav bg-menu sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
         <a class="d-flex justify-content-center my-5" href="/">
-            <img src=".../public/index/img/Oakly-logo.png" alt="Oakly" class="logo">
+            <img src="/index/img/Oakly-logo.png" alt="Oakly" class="logo">
         </a>
 
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
 
         <!-- Nav Item - 會員列表要改路徑 -->
-        <li class="nav-item <?= $current_page == 'index.php' ? 'active' : '' ?>" >
+        <li class="nav-item">
             <a class="nav-link" href="../users/index.php">
                 <i class="fa-solid fa-user"></i>
                 <span>會員資料列表</span></a>
@@ -21,7 +19,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
 
 
         <!-- Nav Item - 商品管理路徑要改 -->
-        <li class="nav-item <?= $current_page == 'productlist.php' ? 'active' : '' ?>">
+        <li class="nav-item">
             <a class="nav-link" href="../product/productlist.php">
                 <i class="fa-brands fa-product-hunt"></i>
                 <span>商品資料</span>
@@ -33,7 +31,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
 
 
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item <?= $current_page == 'couponsList.php' ? 'active' : '' ?>">
+        <li class="nav-item">
             <a class="nav-link" href="../coupons/couponsList.php">
                 <i class="fa-solid fa-tags"></i>
                 <span>優惠券管理</span>
@@ -41,7 +39,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
         </li>
 
         <!-- Nav Item - Charts -->
-        <li class="nav-item <?= $current_page == 'articleList.php' ? 'active' : '' ?>">
+        <li class="nav-item">
             <a class="nav-link" href="../article/articleList.php">
                 <i class="fa-solid fa-newspaper"></i>
                 <span>文章管理</span></a>

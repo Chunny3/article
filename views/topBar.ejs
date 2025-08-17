@@ -36,19 +36,19 @@
 
         <!-- Nav Item - User Information -->
         <li class="d-flex nav-item dropdown no-arrow">
-            <div class="nav-link " href="#"role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
+            <div class="nav-link " href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                    <?= isset($_SESSION["user"]["name"]) ? htmlspecialchars($_SESSION["user"]["name"]) : "管理員" ?>
+                   管理員
                 </span>
                 <img class="img-profile rounded-circle"
-                    src="<?= isset($_SESSION["user"]["img"]) && $_SESSION["user"]["img"] ? './users/uploads/' . htmlspecialchars($_SESSION["user"]["img"]) : '../users/uploads/no-image.jpg' ?>"
+                    src="/index/img/no-image.jpg"
                     alt="使用者頭像">
-                </div>
-                <div class="d-flex align-items-center" style="height: 100%";>
-                    <a class="d-flex ml-2 mr-2 align-items-center" style="color: #858796;" href="../users/doLogout.php"><i
-                            class="fa-solid fa-right-to-bracket"></i></a>
-                </div>
+            </div>
+            <div class="d-flex align-items-center" style="height: 100%" ;>
+                <a class="d-flex ml-2 mr-2 align-items-center" style="color: #858796;" href="../users/doLogout.php"><i
+                        class="fa-solid fa-right-to-bracket"></i></a>
+            </div>
             <!-- Dropdown - User Information
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-bs-item" href="../users/update.php?id=<?= isset($_SESSION["user"]["id"]) ? $_SESSION["user"]["id"] : '' ?>">
@@ -74,14 +74,14 @@
     </ul>
 
 </nav>
-<script src="../vendor/jquery/jquery.min.js"></script>
-<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
-<script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Custom scripts for all pages-->
-<script src="../js/sb-admin-2.min.js"></script>
+<script src="/js/sb-admin-2.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
     crossorigin="anonymous"></script>
