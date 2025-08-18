@@ -138,11 +138,11 @@
                                                     <%= rows[i].article_category_id %>
                                                 </td>
                                                 <td>
-                                                    <%= $row["tagName"] %>
+                                                    <%= rows[i].tagName %>
                                                 </td>
                                                 <td>
                                                     <!-- <span class='date-status date-pending'>未發佈</span><br> -->
-                                                    <?= $row["created_date"] ?>
+                                                    <%= rows[i].created_date %>
                                                 </td>
                                                 <td>
                                                     <!-- <button type="button" class="btn-view" data-toggle="modal"
@@ -154,7 +154,7 @@
                                                     <a href="./doDelete.php?id=<?= $row[" id"] ?>" class="btn btn-sm"><i
                                                             class="fa-solid fa-trash"></i></a>
                                             </tr>
-                                            <?php endforeach; ?>
+                                            <% } %>
                                         </tbody>
                                     </table>
                                 </div>

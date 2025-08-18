@@ -1,6 +1,6 @@
 import express from "express";
 import mysql from "mysql";
-import path from 'path';
+import path from "path";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -11,13 +11,12 @@ const app = express();
 app.listen(8181);
 app.use(express.urlencoded({ extended: true }));
 // 靜態檔案（css, js, img 都可以放 public）
-app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(express.static(path.join(__dirname, "public")));
 
 // 設定 view engine 為 ejs
-app.set('view engine', 'ejs');
+app.set("view engine", "ejs");
 // 設定 views 資料夾路徑
-app.set('views', __dirname + '/views');
+app.set("views", __dirname + "/views");
 
 // mysql 連線
 let conn = mysql.createConnection({
@@ -32,33 +31,39 @@ conn.connect((err) => {
 });
 
 // 到 articleList.ejs 首頁
-app.get("/", (req, res)=>{
+app.get("/", (req, res) => {
   let sql = "SELECT * FROM article";
-  conn.query(sql, (err, result)=>{
-    if(err) throw err;
-    // render() 會把 index.ejs 轉成 HTML 回傳給瀏覽器
-    res.render('articleList', result);
-  })
-})
+  conn.query(sql, (err, result) => {
+    if (err) throw err;
+    // render() 會把 articleList.ejs 轉成 HTML 回傳給瀏覽器
+    res.render("articleList", { rows: result });
+  });
+});
 
-app.get('/article/add', (req, res) => {
+app.get("/article/add", (req, res) => {
   let sql = "SELECT id, name From article_category ";
   conn.query(sql, (err, result) => {
     if (err) throw err;
-    res.send({ current_page: '/' });
-    res.render('add', { rows: result });
-  })
-})
+    res.send({ current_page: "/" });
+    res.render("add", { rows: result });
+  });
+});
 
 app.post("/article/insert", (req, res) => {
   let sql = "INSERT INTO employee VALUES(?,?,?,?,?,?)";
-  let params = [req.body.empno, req.body.ename, req.body.hiredate, req.body.salary, req.body.deptno, req.body.title];
+  let params = [
+    req.body.empno,
+    req.body.ename,
+    req.body.hiredate,
+    req.body.salary,
+    req.body.deptno,
+    req.body.title,
+  ];
   conn.query(sql, params, (err, result) => {
     if (err) throw err;
     res.send("1 record inserted");
   });
 });
-
 
 // 查詢表格所有資料
 app.get("/employee/getall", (req, res) => {
@@ -99,7 +104,14 @@ app.get("/employee/getone2/:empno", (req, res) => {
 
 app.post("/employee/insert", (req, res) => {
   let sql = "INSERT INTO employee VALUES(?,?,?,?,?,?)";
-  let params = [req.body.empno, req.body.ename, req.body.hiredate, req.body.salary, req.body.deptno, req.body.title];
+  let params = [
+    req.body.empno,
+    req.body.ename,
+    req.body.hiredate,
+    req.body.salary,
+    req.body.deptno,
+    req.body.title,
+  ];
   conn.query(sql, params, (err, result) => {
     if (err) throw err;
     res.send("1 record inserted");
@@ -108,7 +120,7 @@ app.post("/employee/insert", (req, res) => {
 
 app.get("/employee/update", (req, res) => {
   let sql = "UPDATE employee SET salary = ? WHERE empno = ?";
-  let params = [50000, '1009'];
+  let params = [50000, "1009"];
   conn.query(sql, params, (err, result) => {
     if (err) throw err;
     res.send("1 record updated");
@@ -117,7 +129,7 @@ app.get("/employee/update", (req, res) => {
 
 app.get("/employee/delete", (req, res) => {
   let sql = "Delete FROM employee WHERE empno = ?";
-  let params = ['1009'];
+  let params = ["1009"];
   conn.query(sql, params, (err, result) => {
     if (err) throw err;
     res.send("1 record deleted");
