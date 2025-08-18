@@ -63,3 +63,7 @@ CREATE TABLE `article_tag` (
     FOREIGN KEY (`article_id`) REFERENCES article (`id`),
     FOREIGN KEY (`tag_id`) REFERENCES tag (`id`)
 );
+SELECT article.*, article_category.name 
+  FROM article
+  left join article_category
+  on article.article_category_id = article_category.id

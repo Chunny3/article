@@ -32,7 +32,11 @@ conn.connect((err) => {
 
 // 到 articleList.ejs 首頁
 app.get("/", (req, res) => {
-  let sql = "SELECT * FROM article";
+  let sql = `SELECT article.*, article_category.name 
+  FROM article
+  left join article_category
+  on article.article_category_id = article_category.id;
+  `;
   conn.query(sql, (err, result) => {
     if (err) throw err;
     // render() 會把 articleList.ejs 轉成 HTML 回傳給瀏覽器
@@ -52,9 +56,9 @@ app.get("/article/add", (req, res) => {
 app.post("/article/insert", (req, res) => {
   let sql = "INSERT INTO employee VALUES(?,?,?,?,?,?)";
   let params = [
-    req.body.empno,
-    req.body.ename,
-    req.body.hiredate,
+    req.body.id,
+    req.body.title,
+    req.body.content,
     req.body.salary,
     req.body.deptno,
     req.body.title,
@@ -64,6 +68,18 @@ app.post("/article/insert", (req, res) => {
     res.send("1 record inserted");
   });
 });
+
+app.get("/article/delete", (req, res) => {
+  let sql = "Delete FROM furnitrue WHERE id = ?";
+  let params = ["1009"];
+  conn.query(sql, params, (err, result) => {
+    if (err) throw err;
+    res.send("1 record deleted");
+  });
+});
+
+
+// -------------------------------------------------------------
 
 // 查詢表格所有資料
 app.get("/employee/getall", (req, res) => {
